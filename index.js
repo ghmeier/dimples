@@ -23,7 +23,7 @@ app.get('/', function(request, response) {
 		if (!error && response.statusCode == 200){
 			var img = JSON.parse(res.body).data;
 
-			response.json(img);
+			response.send(img.url);
 		}
 	});
 
