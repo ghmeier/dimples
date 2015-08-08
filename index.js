@@ -30,7 +30,7 @@ app.get('/', function(request, response) {
 			makereq.post("https:/slack.com/api/chat.postMessage",
 				JSON.stringify({channel:channel,username:"Dimplebot",unfurl_links:true,token:token,text:"<"+img.url+">"}),
 				function(error,slackRes,body){
-					console.log(slackRes,body);
+					console.log(error,slackRes,body);
 
 					response.json(body);
 				});
