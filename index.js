@@ -19,7 +19,7 @@ app.get('/', function(request, response) {
 	var token = request.query.token;
 	var team_id = request.query.team_id;
 	var channel= request.query.channel_id;
-
+	console.log(request.query);
 	makereq("http://api.imgflip.com/caption_image?template_id=42404825&username=headin_thecloud&password=headin_thecloud&text0="+top.join(" ")+"&text1="+bottom.join(" "),
 			function(error,res,body){
 		
