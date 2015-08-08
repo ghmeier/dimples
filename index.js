@@ -16,7 +16,7 @@ app.get('/', function(request, response) {
 	var words = text.split(" ");
 	var top = words.slice(0,words.length/2);
 	var bottom = words.slice(words.length/2);
-	var token = request.query.token;
+	var token = "xoxp-2153342770-2579407953-5198644515-1e2e4f";
 	var team_id = request.query.team_id;
 	var channel= request.query.channel_id;
 	console.log(request.query);
