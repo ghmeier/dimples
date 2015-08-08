@@ -16,6 +16,9 @@ app.get('/', function(request, response) {
 	var words = text.split(" ");
 	var top = words.slice(0,words.length/2);
 	var bottom = words.slice(words.length/2);
+	var token = request.query.token;
+	var team_id = request.query.team_id;
+	var channel= request.query.channel_id;
 
 	makereq("http://api.imgflip.com/caption_image?template_id=42404825&username=headin_thecloud&password=headin_thecloud&text0="+top.join(" ")+"&text1="+bottom.join(" "),
 			function(error,res,body){
@@ -23,7 +26,12 @@ app.get('/', function(request, response) {
 		if (!error && response.statusCode == 200){
 			var img = JSON.parse(res.body).data;
 
-			response.send(img.url);
+			makereq.post("https://hooks.slack.com/services/"+team_id+"/"+channel+"/"+token,
+				"payload="+JSON.stringify({text:"<"+img.url+">"}),
+				function(error,slackRes,body){
+					response.json(body);
+				});
+			//response.send(img.url);
 		}
 	});
 
