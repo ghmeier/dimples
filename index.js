@@ -27,7 +27,7 @@ app.get('/', function(request, response) {
 			var img = JSON.parse(res.body).data;
 			console.log("URL TO POST:"+"https:/slack.com/api/chat.postMessage");
 			console.log("PAYLOAD: "+"payload="+JSON.stringify({channel:channel,username:"Dimplebot",unfurl_links:true,token:token,text:"<"+img.url+">"}));
-			makereq.post("https:/slack.com/api/chat.postMessage",
+			makereq.post("https://slack.com/api/chat.postMessage",
 				JSON.stringify({channel:channel,username:"Dimplebot",unfurl_links:true,token:token,text:"<"+img.url+">"}),
 				function(error,slackRes,body){
 					console.log(error,slackRes,body);
