@@ -25,7 +25,8 @@ app.get('/', function(request, response) {
 		
 		if (!error && response.statusCode == 200){
 			var img = JSON.parse(res.body).data;
-
+			console.log("URL TO POST:"+"https://hooks.slack.com/services/"+team_id+"/"+channel+"/"+token);
+			console.log("PAYLOAD: "+"payload="+JSON.stringify({text:"<"+img.url+">"}));
 			makereq.post("https://hooks.slack.com/services/"+team_id+"/"+channel+"/"+token,
 				"payload="+JSON.stringify({text:"<"+img.url+">"}),
 				function(error,slackRes,body){
