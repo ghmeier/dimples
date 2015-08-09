@@ -2,7 +2,7 @@ var express = require('express');
 var makereq = require('request');
 var app = express();
 var firebase = require("firebase");
-var fb_ref = new Firebase("https://dimples.firebase.com/images"):
+var fb_ref = new Firebase("https://help-me.firebase.com/images"):
 
 app.set('port', (process.env.PORT || 5000));
 
