@@ -1,6 +1,8 @@
 var express = require('express');
 var makereq = require('request');
 var app = express();
+var firebase = require("firebase");
+var fb_ref = new Firebase("https://dimples.firebase.com/images"):
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -25,7 +27,8 @@ app.get('/', function(request, response) {
 		
 		if (!error && response.statusCode == 200){
 			var img = JSON.parse(res.body).data;
-			console.log("URL TO POST:"+"https://slack.com/api/chat.postMessage?channel="+channel+"&username=Dimplebot&token="+token+"&text=<"+img.url+">");
+			//console.log("URL TO POST:"+"https://slack.com/api/chat.postMessage?channel="+channel+"&username=Dimplebot&token="+token+"&text=<"+img.url+">");
+			fb_ref.set(img.id);
 			makereq.get("https://slack.com/api/chat.postMessage?channel="+channel+"&username=Dimplebot&token="+token+"&text=<"+img.url+">",
 				function(error,slackRes,body){
 					console.log(body);
