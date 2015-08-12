@@ -19,7 +19,7 @@ app.get('/', function(request, response) {
 	var top = "",bottom = "";
 	while(words.length > 0){
 		if (top.length > bottom.length){
-			bottom += " "+words.pop();
+			bottom = words.pop() + " " + bottom;
 		}else{
 			top += " "+words.shift();
 		}
