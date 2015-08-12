@@ -16,8 +16,7 @@ app.get('/', function(request, response) {
 
 	var text = request.query.text;
 	var words = text.split(" ");
-	var top = words[0];//words.slice(0,words.length/2);
-	var bottom = words[words.length-1];//words.slice(words.length/2);
+	var top = "",bottom = "";
 	while(words.length > 0){
 		if (top.length > bottom.length){
 			bottom += " "+words.pop();
