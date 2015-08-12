@@ -16,13 +16,21 @@ app.get('/', function(request, response) {
 
 	var text = request.query.text;
 	var words = text.split(" ");
-	var top = words.slice(0,words.length/2);
-	var bottom = words.slice(words.length/2);
+	var top = words[0];//words.slice(0,words.length/2);
+	var bottom = words[words.length-1];//words.slice(words.length/2);
+	while(words.length > 0){
+		if (top.length > bottom.length){
+			bottom += " "+words.pop();
+		}else{
+			top += " "+words.shift();
+		}
+	}
+
 	var token = "xoxp-2153342770-2579407953-5198644515-1e2e4f";
 	var team_id = request.query.team_id;
 	var channel= request.query.channel_id;
 	console.log(request.query);
-	makereq("http://api.imgflip.com/caption_image?template_id=42404825&username=headin_thecloud&password=headin_thecloud&text0="+top.join(" ")+"&text1="+bottom.join(" "),
+	makereq("http://api.imgflip.com/caption_image?template_id=42404825&username=headin_thecloud&password=headin_thecloud&text0="+top+"&text1="+bottom,
 			function(error,res,body){
 		
 		if (!error && response.statusCode == 200){
