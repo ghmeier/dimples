@@ -25,7 +25,7 @@ $ heroku create
 $ git push heroku master
 ```
 Configure your slash command like so:
-![Slack Config](https://github.comd/ghmeier/dimples/images/slack_dimples.png)
+![Slack Config](https://raw.githubusercontent.com/ghmeier/dimples/master/images/slack_dimples.png)
 
 Set the token value in index.js to your slack API token.
 
